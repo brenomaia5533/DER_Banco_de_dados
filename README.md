@@ -20,3 +20,54 @@ Deseja-se ainda informatizar a receita do médico, de maneira que, no encerramen
 DIAGRAMA DE ENTIDADE RELACIONAL:
 
 ![Captura de tela 2023-10-22 214513](https://github.com/brenomaia5533/DER_Banco_de_dados/assets/142261368/9837bcb7-fb79-48f7-86bb-f9cbbc03a82f)
+
+
+Parte 2:
+
+Script para trabalhar com essa tabela no banco de dados:
+
+use consultas;
+
+select * from quartos;
+
+insert into quartos values
+( 1, "apartamentos", 230.00 ),
+( 2, "quartos_duplos", 160.00 ),
+( 3, "enfermaria", 95.00 );
+
+select * from internacoes;
+
+INSERT INTO internacoes VALUES
+(1, '2021-11-05', '2021-11-18', '2021-11-18', 160.00, 18, 2, 6),
+(2, '2020-01-28', '2021-02-05', '2021-02-10', 230.00, 17, 2, 6),
+(3, '2019-05-05', '2019-05-18', '2019-05-18', 160.00, 16, 2, 6),
+(4, '2021-12-25', '2021-12-27', '2021-12-28', 160.00, 15, 2, 6),
+(5, '2020-11-10', '2020-11-18', '2020-11-18', 95.00, 10, 2, 6),
+(6, '2021-11-11', '2021-11-18', '2021-11-18', 160.00, 9, 2, 6),
+(7, '2022-03-27', '2022-04-01', '2022-04-03', 160.00, 8, 2, 6),
+(8, '2021-08-16', '2021-08-19', '2021-08-20', 95.00, 7, 2, 6),
+(9, '2022-09-12', '2022-09-22', '2022-10-01', 95.00, 6, 2, 6),
+(10, '2019-02-05', '2019-02-18', '2019-02-18', 230.0, 5, 2, 6);
+
+
+
+INSERT INTO internacoes ( data_entrada_internacao,data_alta_internacao , prevista_alta_internacao , valor_diaria_quarto)
+SELECT   data_entrada_internacao,data_alta_internacao , prevista_alta_internacao , valor_diaria_quarto
+FROM consultas;
+
+ALTER TABLE internacoes
+CHANGE data_entrada data_entrada_internacao DATE;
+
+ALTER TABLE internacoes
+CHANGE prevista_alta_intercao data_alta_internacao DATE;
+
+ALTER TABLE internacoes
+CHANGE data_alta prevista_alta_intercao DATE;
+
+ALTER TABLE internacoes
+CHANGE data_alta data_alta_internacao DATE;
+
+ALTER TABLE internacoes
+CHANGE procedimento procedimento_intercao VARCHAR(100);
+
+
